@@ -54,9 +54,16 @@ WHERE continent = 'Europe';
 ### 6
 
 ```sql
-SELECT name FROM world
-WHERE gdp > ALL(SELECT MAX(gdp) FROM world WHERE continent = 'Europe');
+SELECT
+  name
+FROM
+  world
+WHERE
+  gdp > ALL(SELECT MAX(gdp) FROM world WHERE continent = 'Europe')
+;
 ```
+
+`ALL` is used to select all records of a SELECT statment. It compares a value to every value in a list or results from a query.
 
 ### 7
 
@@ -72,7 +79,10 @@ WHERE area >= ALL(SELECT area FROM world y WHERE y.continent=x.continent);
 ### 8
 
 ```sql
-SELECT continent, MIN(name) FROM world
+SELECT
+  continent,
+  MIN(name)
+FROM world
 GROUP BY continent;
 ```
 
